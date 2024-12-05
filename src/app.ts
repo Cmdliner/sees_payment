@@ -3,7 +3,7 @@ import { type Request, type Response } from "express";
 import payment from "./routes/payment.routes";
 import helmet from "helmet";
 import cors from "cors";
-import { AppConfig } from "./controllers/configs/app.config";
+import { AppConfig } from "./configs/app.config";
 
 export const cfg = new AppConfig({
     FLW_BASE_URI: process.env.FLW_BASE_URI,

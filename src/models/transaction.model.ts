@@ -1,5 +1,16 @@
 import { model, Schema } from "mongoose";
 
+
+import { Document } from "mongoose";
+
+export interface ITransaction extends Document {
+    full_name: string;
+    matric_no: string;
+    lvl: number;
+    payment_reason: "dept_dues" | "others";
+    status: "pending" | "failed" |"successful";
+}
+
 const TransactionSchema = new Schema({
     full_name: {
         type: String,
@@ -25,5 +36,5 @@ const TransactionSchema = new Schema({
     }
 }, { timestamps: true });
 
-export const Transaction = model("Transaction", TransactionSchema);
+export const Transaction = model<ITransaction>("Transaction", TransactionSchema);
 
