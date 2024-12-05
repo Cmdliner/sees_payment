@@ -1,5 +1,4 @@
-import axios
-    from "axios";
+import axios from "axios";
 import { cfg } from "../app";
 export class PaymentService {
     static async intiate(transaction: any, amount: number) {
