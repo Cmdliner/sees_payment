@@ -13,10 +13,10 @@ export class PaymentController {
             return res.status(422).json({ error: true, message });
         }
 
-        const _ = await PaymentService.intiate();
-
         const paymentTransaction = new Transaction({ full_name, matric_no, lvl, payment_reason });
         await paymentTransaction.save();
+        const _ = await PaymentService.intiate(paymentTransaction, 12345);
+
 
         if (!paymentTransaction) {
             return res.status(400).json({ error: true, message: "An error occured!" });
@@ -27,9 +27,11 @@ export class PaymentController {
         return res.status(200).json({ success: true, message: "Payment successful", payment_link: `mlkdmtk` });
     }
 
+    static async verify(req: Request, res: Response) {
 
+    }
     static async checkPaymentStatus(req: Request, res: Response) {
-
+        const { transaction_ref } = req.body;
     }
 
 
